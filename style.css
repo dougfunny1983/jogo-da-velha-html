@@ -1,18 +1,58 @@
-body{
-
-}
 .tabuleiro {
   display: flex;
   width: 312px;
   flex-wrap: wrap;
 }
+
 .celula {
   text-align: center;
-  border: solid 2px black;
   width: 100px;
   height: 100px;
+  cursor: pointer;
 }
+
 img {
   width: 90px;
   height: 90px;
+}
+
+#cel-1 {
+  border-right: solid black 1px;
+  border-bottom: solid black 1px;
+}
+
+#cel-2 {
+  border-left: solid black 1px;
+  border-right: solid black 1px;
+  border-bottom: solid black 1px;
+}
+#cel-3 {
+  border-left: solid black 1px;
+  border-bottom: solid black 1px;
+}
+#cel-4 {
+  border-right: solid black 1px;
+  border-top: solid black 1px;
+  border-bottom: solid black 1px;
+}
+#cel-5 {
+  border: solid black 1px;
+}
+#cel-6 {
+  border-left: solid black 1px;
+  border-top: solid black 1px;
+  border-bottom: solid black 1px;
+}
+#cel-7 {
+  border-right: solid black 1px;
+  border-top: solid black 1px;
+}
+#cel-8 {
+  border-left: solid black 1px;
+  border-right: solid black 1px;
+  border-top: solid black 1px;
+}
+#cel-9 {
+  border-left: solid black 1px;
+  border-top: solid black 1px;
 }

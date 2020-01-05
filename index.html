@@ -7,24 +7,28 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Jogo da Velha</title>
   <link rel="stylesheet" href="style.css">
-  <script DEFER="DEFER" src="script.js"></script>
+  <script DEFER="DEFER" src="script.js">
+  </script>
 </head>
 
 <body>
 
   <h1>Jogo da velha</h1>
-  <span>jogada do</span>
-  <section class="tabuleiro">
-    <div class="celula" onclick="jogar()"><img src="/imagem/xis.PNG" alt="x"></div>
-    <div class="celula" onclick="jogar()"><img src="/imagem/xis.PNG" alt="x"></div>
-    <div class="celula" onclick="jogar()"><img src="/imagem/xis.PNG" alt="x"></div>
-    <div class="celula" onclick="jogar()"><img src="/imagem/xis.PNG" alt="x"></div>
-    <div class="celula" onclick="jogar()"><img src="/imagem/xis.PNG" alt="x"></div>
-    <div class="celula" onclick="jogar()"><img src="/imagem/xis.PNG" alt="x"></div>
-    <div class="celula" onclick="jogar()"><img src="/imagem/xis.PNG" alt="x"></div>
-    <div class="celula" onclick="jogar()"><img src="/imagem/xis.PNG" alt="x"></div>
-    <div class="celula" onclick="jogar()"><img src="/imagem/xis.PNG" alt="x"></div>
-  </section>
+  <span class="jogador"></span>
+  <header class="container">
+
+    <section class="tabuleiro">
+      <div id="cel-1" class="celula" onclick="jogar(1)"></div>
+      <div id="cel-2" class="celula" onclick="jogar(2)"></div>
+      <div id="cel-3" class="celula" onclick="jogar(3)"></div>
+      <div id="cel-4" class="celula" onclick="jogar(4)"></div>
+      <div id="cel-5" class="celula" onclick="jogar(5)"></div>
+      <div id="cel-6" class="celula" onclick="jogar(6)"></div>
+      <div id="cel-7" class="celula" onclick="jogar(7)"></div>
+      <div id="cel-8" class="celula" onclick="jogar(8)"></div>
+      <div id="cel-9" class="celula" onclick="jogar(9)"></div>
+    </section>
+  </header>
 </body>
 
 </html>
