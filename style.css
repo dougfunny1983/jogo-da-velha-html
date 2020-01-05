@@ -1,0 +1,14 @@
+body{
+
+}
+.tabuleiro {
+  display: flex;
+  width: 312px;
+  flex-wrap: wrap;
+}
+.celula {
+  text-align: center;
+  border: solid 2px black;
+  width: 100px;
+  height: 100px;
+}
