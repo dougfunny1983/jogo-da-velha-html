@@ -1,3 +1,15 @@
+body {
+  margin: 0 auto;
+  width: 313px;
+}
+
+#jogador {
+  border: solid 1px red;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+}
+
 .tabuleiro {
   display: flex;
   width: 312px;
@@ -12,47 +24,54 @@
 }
 
 img {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
 }
 
-#cel-1 {
+#a1 {
   border-right: solid black 1px;
   border-bottom: solid black 1px;
 }
 
-#cel-2 {
+#a2 {
   border-left: solid black 1px;
   border-right: solid black 1px;
   border-bottom: solid black 1px;
 }
-#cel-3 {
+
+#a3 {
   border-left: solid black 1px;
   border-bottom: solid black 1px;
 }
-#cel-4 {
+
+#b1 {
   border-right: solid black 1px;
   border-top: solid black 1px;
   border-bottom: solid black 1px;
 }
-#cel-5 {
+
+#b2 {
   border: solid black 1px;
 }
-#cel-6 {
+
+#b3 {
   border-left: solid black 1px;
   border-top: solid black 1px;
   border-bottom: solid black 1px;
 }
-#cel-7 {
+
+#c1 {
   border-right: solid black 1px;
   border-top: solid black 1px;
 }
-#cel-8 {
+
+#c2 {
   border-left: solid black 1px;
   border-right: solid black 1px;
   border-top: solid black 1px;
 }
-#cel-9 {
+
+#c3 {
   border-left: solid black 1px;
   border-top: solid black 1px;
 }

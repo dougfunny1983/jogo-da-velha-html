@@ -1,29 +1,114 @@
-const x = "<img src='/imagem/xis.PNG' alt='X' />";
-const bola = "<img src='/imagem/bola.PNG' alt='O' />";
-const jogador = document.querySelector('.jogador');
-let contador = 0;
-const jogadasFeitas = ['', '', '', '', '', '', '', '', ''];
-const quemJoga = (number) => {
-  if (contador % 2 == 0) {
-    jogadasFeitas[number] = x;
-  } else {
-    jogadasFeitas[number] = bola;
+const player1 = 'X';
+const player2 = 'O';
+let playTime = player1;
+let gameOver = false;
+let images = new Array();
+const sequence = [];
+let actualRound = 0;
+let seqPos = 0;
+
+preloadImages('/imagens/xis.PNG', '/imagens/bola.PNG');
+atualizaMostrador();
+inicializarCelulas();
+
+function preloadImages() {
+  for (i = 0; i < preloadImages.arguments.length; i++) {
+    images[i] = new Image();
+    images[i].src = preloadImages.arguments[i];
   }
-};
+}
 
-function jogar(number) {
-  contador += 1;
-  const cases = {
-    1: quemJoga(number),
-    2: quemJoga(number),
-    3: quemJoga(number),
-    4: quemJoga(number),
-    5: quemJoga(number),
-    6: quemJoga(number),
-    7: quemJoga(number),
-    8: quemJoga(number),
-    9: quemJoga(number),
-  };
+function atualizaMostrador() {
+  if (gameOver) {
+    return;
+  }
 
-  return cases[number];
+  if (playTime == player1) {
+    const player = document.querySelectorAll('div#jogador img')[0];
+    player.setAttribute('src', images[0].src);
+  } else {
+    const player = document.querySelectorAll('div#jogador img')[0];
+    player.setAttribute('src', images[1].src);
+  }
+}
+
+function inicializarCelulas() {
+  const espacos = document.getElementsByClassName('celula');
+  for (let i = 0; i < espacos.length; i++) {
+    espacos[i].innerHTML =
+      "<img id='p1' src='" +
+      images[0].src +
+      "' border='0'><img id='p2' src='" +
+      images[1].src +
+      "' border='0'>";
+    espacos[i].getElementsByTagName('img')[0].style.display = 'none';
+    espacos[i].getElementsByTagName('img')[1].style.display = 'none';
+
+    espacos[i].addEventListener('click', function() {
+      if (gameOver) {
+        return;
+      }
+
+      if (this.getAttribute('jogada') == '') {
+        if (playTime == player1) {
+          this.getElementsByTagName('img')[0].style.display = 'inline';
+
+          this.setAttribute('jogada', player1);
+          playTime = player2;
+        } else {
+          this.getElementsByTagName('img')[1].style.display = 'inline';
+
+          this.setAttribute('jogada', player2);
+          playTime = player1;
+        }
+        atualizaMostrador();
+        verificarVencedor();
+      }
+    });
+  }
+}
+
+async function verificarVencedor() {
+  const a1 = document.getElementById('a1').getAttribute('jogada');
+  const a2 = document.getElementById('a2').getAttribute('jogada');
+  const a3 = document.getElementById('a3').getAttribute('jogada');
+
+  const b1 = document.getElementById('b1').getAttribute('jogada');
+  const b2 = document.getElementById('b2').getAttribute('jogada');
+  const b3 = document.getElementById('b3').getAttribute('jogada');
+
+  const c1 = document.getElementById('c1').getAttribute('jogada');
+  const c2 = document.getElementById('c2').getAttribute('jogada');
+  const c3 = document.getElementById('c3').getAttribute('jogada');
+
+  let vencedor = '';
+
+  if (
+    ((a1 == b1 && a1 == c1) ||
+      (a1 == a2 && a1 == a3) ||
+      (a1 == b2 && a1 == c3)) &&
+    a1 != ''
+  ) {
+    vencedor = a1;
+  } else if (
+    (b2 == b1 && b2 == b3 && b2 != '') ||
+    (b2 == a2 && b2 == c2 && b2 != '') ||
+    (b2 == a3 && b2 == c1 && b2 != '')
+  ) {
+    vencedor = b2;
+  } else if (((c3 == c2 && c3 == c1) || (c3 == a3 && c3 == b3)) && c3 != '') {
+    vencedor = c3;
+  }
+
+  if (vencedor != '') {
+    gameOver = true;
+
+    await sleep(50);
+    alert("O ganhador foi o: '" + vencedor + "'");
+    window.location.reload();
+  }
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
