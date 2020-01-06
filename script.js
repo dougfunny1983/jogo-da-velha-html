@@ -48,7 +48,6 @@ function inicializarCelulas() {
       if (gameOver) {
         return;
       }
-
       if (this.getAttribute('jogada') == '') {
         if (playTime == player1) {
           this.getElementsByTagName('img')[0].style.display = 'inline';
